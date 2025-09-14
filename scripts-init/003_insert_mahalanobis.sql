@@ -1,0 +1,1 @@
+-- INSERT INTO usuarios (nome, salario, idade) VALUES ('Mahalanobis', 6000.00, 45) ON CONFLICT DO NOTHING;
