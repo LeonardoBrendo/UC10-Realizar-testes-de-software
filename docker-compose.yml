@@ -29,8 +29,9 @@ services:
       db:
         condition: service_healthy
     volumes:
-      - ./shell_projeto/seed.sh:/seed.sh
-    entrypoint: ["bash", "/seed.sh"]
+      - ./scripts-init:/scripts-init
+      - ./scripts-init/entrypoint.sh:/entrypoint.sh
+    entrypoint: ["bash", "/entrypoint.sh"]
     restart: "no"
 
   backend:
