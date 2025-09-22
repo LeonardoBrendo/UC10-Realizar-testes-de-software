@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -e
 
 export DB_USER=${DB_USER:-postgres}
@@ -37,4 +36,3 @@ ON CONFLICT DO NOTHING;
 EOSQL
 
 echo "✅ Registros inseridos!"
-
