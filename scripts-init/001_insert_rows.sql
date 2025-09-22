@@ -1,19 +1,3 @@
-#!/bin/bash
-set -e
-
-export DB_USER=${DB_USER:-postgres}
-export DB_PASSWORD=${DB_PASSWORD:-teste}
-export DB_NAME=${DB_NAME:-crud_db}
-export DB_HOST=${DB_HOST:-db}
-
-echo "⏳ Aguardando banco ficar pronto..."
-until PGPASSWORD=$DB_PASSWORD psql -h "$DB_HOST" -U "$DB_USER" -d "$DB_NAME" -c '\q'; do
-  sleep 1
-done
-
-echo "🚀 Inserindo registros iniciais..."
-
-PGPASSWORD=$DB_PASSWORD psql -h "$DB_HOST" -U "$DB_USER" -d "$DB_NAME" <<-EOSQL
 CREATE TABLE IF NOT EXISTS usuarios (
     id SERIAL PRIMARY KEY,
     nome TEXT NOT NULL,
@@ -33,6 +17,3 @@ INSERT INTO usuarios (nome, salario, idade) VALUES
 ('Isabela', 4200.00, 38),
 ('João', 2150.00, 25)
 ON CONFLICT DO NOTHING;
-EOSQL
-
-echo "✅ Registros inseridos!"

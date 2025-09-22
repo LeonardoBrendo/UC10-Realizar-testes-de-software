@@ -1,0 +1,1 @@
+-- UPDATE usuarios SET salario = salario * 1.10 WHERE salario > 5000;
